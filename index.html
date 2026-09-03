@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ixtla</title>
+<meta name="description" content="Ixtla makes one rug. Handwoven in Mexico from undyed wool, coloured only with plants and cochineal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wool:#F1EEE7;   /* undyed fleece, the ground of every rug */
+  --paper:#FAF8F4;
+  --ink:#1D1F23;
+  --ink-2:#4B4D51;
+  --mute:#686A65;   /* 4.7:1 on the wool ground, AA for small text */
+  --line:#D8D3C8;
+  --indigo:#2E4062; /* añil, the one accent */
+  --ochre:#C99A2E;
+  --rust:#B8532F;
+  --cochineal:#8E2F4B;
+  --sage:#8C9B78;
+  --teal:#3D6B6E;
+  --plum:#5E3A55;
+  --nogal:#6B4E36;
+  --nav:64px;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:light}
+body{margin:0;background:var(--wool);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:100%;object-fit:cover}
+figure{margin:0}
+fieldset{min-inline-size:0}
+[id]{scroll-margin-top:calc(var(--nav) + 24px)}
+.g12>*{min-width:0}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,.strip:focus-visible{outline:2px solid var(--indigo);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:300;margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+.eyebrow{font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.g12{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+
+/* the product, cut out of its photo: sits on the page itself with a soft shadow */
+.cut{display:grid;place-items:center}
+.cut img{width:auto;height:auto;max-width:92%;max-height:92%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(29,31,35,.14)) drop-shadow(0 2px 4px rgba(29,31,35,.06))}
+
+/* the rug's own mark: one row of dyed wefts, drawn in CSS */
+.grain{height:8px;margin:clamp(64px,9vw,136px) 0;background-repeat:repeat-x;background-size:176px 8px;
+  background-position:0 0,22px 0,44px 0,66px 0,88px 0,110px 0,132px 0,154px 0;
+  background-image:
+    radial-gradient(7px 3px at 8px 50%,var(--indigo) 0% 78%,transparent 100%),
+    radial-gradient(7px 3px at 8px 50%,var(--ochre) 0% 78%,transparent 100%),
+    radial-gradient(7px 3px at 8px 50%,var(--rust) 0% 78%,transparent 100%),
+    radial-gradient(7px 3px at 8px 50%,var(--sage) 0% 78%,transparent 100%),
+    radial-gradient(7px 3px at 8px 50%,var(--cochineal) 0% 78%,transparent 100%),
+    radial-gradient(7px 3px at 8px 50%,var(--teal) 0% 78%,transparent 100%),
+    radial-gradient(7px 3px at 8px 50%,var(--plum) 0% 78%,transparent 100%),
+    radial-gradient(7px 3px at 8px 50%,var(--nogal) 0% 78%,transparent 100%)}
+
+/* header: translucent, and its hairline only appears once content scrolls beneath it */
+.top{position:sticky;top:0;z-index:10;height:var(--nav);background:color-mix(in srgb,var(--wool) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;animation:edge linear both;animation-timeline:scroll(root);animation-range:0px 80px}
+@keyframes edge{to{border-color:var(--line)}}
+@supports not (animation-timeline:scroll()){.top{border-color:var(--line)}}
+.top .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.mark{font:500 15px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;padding-left:.34em}
+.top nav{display:flex;gap:30px;font-size:14px}
+.top nav a{color:var(--ink-2);transition:color .2s;padding:8px 0}
+.top nav a:hover{color:var(--ink)}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--indigo);color:var(--paper);padding:15px 22px;font:500 15px/1 var(--sans);transition:background .2s,transform .08s;white-space:nowrap}
+.cta:hover{background:var(--ink)}
+.cta:active{transform:scale(.97)}
+.cta.small{padding:13px 16px;font-size:13px}
+.cta b{font-weight:500;font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{padding-top:clamp(44px,7vw,104px)}
+.hero h1{font-size:clamp(48px,7.8vw,118px);line-height:.95;max-width:11ch;margin-top:22px}
+.hero h1 em{color:var(--indigo)}
+.hero .g12{margin-top:clamp(36px,4.5vw,64px);align-items:start}
+.hero-img{grid-column:1/8;height:min(82vh,980px);place-items:center start}
+.hero-side{grid-column:9/13;position:sticky;top:calc(var(--nav) + 40px);display:grid;gap:32px}
+.lede{font-size:19px;line-height:1.5;color:var(--ink-2);max-width:34ch}
+.hero-cta{display:grid;gap:12px;justify-items:start}
+.hero-cta small{font-size:13px;color:var(--mute)}
+.facts{display:grid;gap:0;margin:0}
+.facts div{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line);font-size:14px}
+.facts dt{color:var(--mute)}
+.facts dd{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--ink)}
+
+/* product: a native scroll-snap strip, so it tracks the finger and carries momentum on its own */
+.gallery{grid-column:1/8}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.strip::-webkit-scrollbar{display:none}
+.strip figure{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/5}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;aspect-ratio:4/1} /* reserves the row before JS fills it */
+.thumbs button{padding:0 0 8px;border:0;border-bottom:2px solid transparent;background:none;cursor:pointer;opacity:.7;transition:opacity .2s,transform .08s;outline-offset:3px}
+.thumbs button[aria-pressed=true]{opacity:1;border-bottom-color:var(--ink)}
+.thumbs button:hover,.thumbs button:active{opacity:1}
+.thumbs button:active{transform:scale(.96)}
+.thumbs img{aspect-ratio:1;height:auto;object-fit:contain}
+.buy{grid-column:9/13;position:sticky;top:calc(var(--nav) + 40px)}
+.buy h2{font-size:clamp(52px,5.6vw,80px);line-height:1;margin:16px 0 20px}
+.buy h2 em{font-style:italic}
+.buy .desc{color:var(--ink-2);max-width:36ch}
+.sizes{border:0;padding:0;margin:32px 0 0;position:relative}
+.sizes legend{padding:0;margin-bottom:12px}
+.size{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;border-top:1px solid var(--line);cursor:pointer;font-variant-numeric:tabular-nums}
+.size:last-of-type{border-bottom:1px solid var(--line)}
+.size input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.size .dim{display:flex;align-items:baseline;gap:12px}
+.size .dim::before{content:"";width:9px;height:9px;border:1px solid var(--ink);border-radius:50%;align-self:center;transition:background .15s}
+.size .in{color:var(--mute);font-size:14px}
+.size .p{color:var(--mute)}
+.size:has(input:checked) .dim::before{background:var(--indigo);border-color:var(--indigo)}
+.size:has(input:checked) .p{color:var(--ink)}
+.size:has(input:focus-visible){outline:2px solid var(--indigo);outline-offset:4px}
+.price{display:flex;align-items:baseline;gap:14px;margin:30px 0 18px}
+.price b{font:300 44px/1 var(--serif);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.price span{font-size:13px;color:var(--mute)}
+.note{font-size:13px;color:var(--mute);margin-top:14px;line-height:1.6}
+.ledger{display:grid;grid-template-columns:auto 1fr;gap:9px 28px;margin:40px 0 0;font-size:14px}
+.ledger dt{color:var(--mute)}
+.ledger dd{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.55}
+
+/* craft */
+.sec-h{max-width:20ch;font-size:clamp(38px,4.8vw,66px);line-height:1.02;margin-top:18px}
+.three{margin-top:clamp(40px,5vw,64px)}
+.three > div{grid-column:span 4}
+.three figure{aspect-ratio:3/4}
+.three .cut img{max-width:100%;max-height:100%}
+.three h3{font-size:36px;font-style:italic;margin:24px 0 10px}
+.three p{color:var(--ink-2);font-size:16px;max-width:38ch}
+
+/* colour */
+.colour-intro{grid-column:1/7;color:var(--ink-2);max-width:48ch;font-size:18px;margin-top:20px}
+.dyes{margin-top:clamp(40px,5vw,64px);row-gap:44px}
+.dye{grid-column:span 4;border-top:1px solid var(--line);padding-top:18px}
+.lenses{display:flex;gap:8px;margin-bottom:18px}
+.lens{width:30px;height:12px;border-radius:50%}
+.dye h3{font:500 17px/1.3 var(--sans);letter-spacing:0}
+.dye .lat{display:block;font:italic 300 17px/1.3 var(--serif);color:var(--mute);margin-top:2px}
+.dye p{font-size:15px;color:var(--ink-2);margin-top:10px;max-width:34ch}
+
+/* story */
+.story{align-items:center}
+.story .txt{grid-column:1/5;display:grid;gap:24px}
+.story .txt p:not(.eyebrow){color:var(--ink-2);max-width:36ch;font-size:18px}
+.story figure{grid-column:6/13;aspect-ratio:1}
+
+/* care */
+.care h2{grid-column:1/5}
+.care ol{grid-column:6/13;list-style:none;padding:0;margin:0}
+.care li{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:20px 0;border-top:1px solid var(--line);font-size:18px}
+.care li:last-child{border-bottom:1px solid var(--line)}
+.care li span{font:500 12px/1.9 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-top:2px}
+.care li p{color:var(--ink-2)}
+
+/* footer */
+footer{margin-top:clamp(88px,11vw,170px);border-top:1px solid var(--line);padding:52px 0 44px}
+.foot .mark{grid-column:1/4;font-size:22px;align-self:start}
+.foot .def{grid-column:4/8;font:italic 300 20px/1.45 var(--serif);color:var(--ink-2);max-width:26ch}
+.foot .links{grid-column:9/13;display:grid;gap:2px;font-size:14px;align-content:start;justify-items:start}
+.foot .links a{color:var(--ink-2);padding:8px 0}
+.foot .links a:hover{color:var(--ink)}
+.foot small{grid-column:1/13;color:var(--mute);font-size:12px;margin-top:40px}
+
+@media (max-height:980px){.buy{position:static}}
+@media (max-width:900px){
+  .hero-img,.hero-side,.gallery,.buy,.three > div,.colour-intro,.story .txt,.story figure,.care h2,.care ol,.foot .mark,.foot .def,.foot .links{grid-column:1/-1}
+  .hero-side,.buy{position:static}
+  .top nav{display:none}
+  .dye{grid-column:span 6}
+  .hero-img{height:auto;place-items:center}
+  .hero-img img{max-height:72vh}
+  .three > div + div{margin-top:24px}
+  .care li{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:560px){.dye{grid-column:1/-1}.thumbs{gap:8px}}
+@media (prefers-reduced-motion:reduce){html,.strip{scroll-behavior:auto}}
+@media (prefers-reduced-transparency:reduce){.top{background:var(--wool);backdrop-filter:none;-webkit-backdrop-filter:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Ixtla</a>
+    <nav aria-label="Sections">
+      <a href="#rug">The rug</a>
+      <a href="#craft">Craft</a>
+      <a href="#colour">Colour</a>
+      <a href="#care">Care</a>
+    </nav>
+    <a class="cta small" href="#rug">Reserve <b data-price>$190</b></a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero wrap">
+  <p class="eyebrow">Handwoven in Mexico · 100% wool · Coloured with plants</p>
+  <h1>Wool, plants, hands. <em>Nothing else.</em></h1>
+  <div class="g12">
+    <figure class="hero-img cut">
+      <img src="img/6416.webp" alt="The Milpa rug seen from above: an ivory wool ground crossed by rows of small coloured dashes, with a hand-twisted fringe at each end." fetchpriority="high">
+    </figure>
+    <aside class="hero-side">
+      <p class="lede">Ixtla makes one rug. It is woven by hand on a pedal loom from undyed wool, and every dot of colour in it was drawn from a plant, a root or an insect. No synthetic dye, no backing, no glue. It arrives smelling faintly of lanolin.</p>
+      <div class="hero-cta">
+        <a class="cta" href="#rug">Reserve the Milpa rug</a>
+        <small>From $190 · Made to order · Ships worldwide</small>
+      </div>
+      <dl class="facts">
+        <div><dt>Ground</dt><dd>Undyed wool, hand-spun</dd></div>
+        <div><dt>Colour</dt><dd>Indigo · cochineal · marigold · pomegranate · walnut</dd></div>
+        <div><dt>Time</dt><dd>About four days at the loom, for the smallest size</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<div class="grain" aria-hidden="true"></div>
+
+<section id="rug" class="wrap g12 product">
+  <div class="gallery">
+    <div class="strip" id="strip" role="region" aria-label="Views of the rug. Scroll sideways for more." tabindex="0">
+      <figure class="cut"><img src="img/6422.webp" alt="The whole rug from above, fringe at both ends."></figure>
+      <figure class="cut"><img src="img/6420.webp" alt="The selvedge edge and fringe, close." loading="lazy"></figure>
+      <figure class="cut"><img src="img/6424.webp" alt="A corner: rows of dashes ending in twisted fringe." loading="lazy"></figure>
+      <figure class="cut"><img src="img/6421.webp" alt="The rug at an angle, showing the weave catching the light." loading="lazy"></figure>
+    </div>
+    <div class="thumbs" id="thumbs" role="group" aria-label="Choose a view"></div>
+  </div>
+
+  <div class="buy">
+    <p class="eyebrow">The rug</p>
+    <h2><em>Milpa</em></h2>
+    <p class="desc">A pale ground of hand-spun wool, sown with rows of colour. Each dash is a short length of dyed weft laid in by hand. The fringe is the warp itself, twisted and knotted when the rug leaves the loom.</p>
+
+    <fieldset class="sizes">
+      <legend class="eyebrow">Size</legend>
+      <label class="size"><input type="radio" name="size" value="s" data-label="60 × 90 cm" checked><span class="dim">60 × 90 cm <span class="in">2 × 3 ft</span></span><span class="p">$190</span></label>
+      <label class="size"><input type="radio" name="size" value="m" data-label="90 × 150 cm"><span class="dim">90 × 150 cm <span class="in">3 × 5 ft</span></span><span class="p">$440</span></label>
+      <label class="size"><input type="radio" name="size" value="l" data-label="120 × 180 cm"><span class="dim">120 × 180 cm <span class="in">4 × 6 ft</span></span><span class="p">$720</span></label>
+      <label class="size"><input type="radio" name="size" value="xl" data-label="170 × 240 cm"><span class="dim">170 × 240 cm <span class="in">5½ × 8 ft</span></span><span class="p">$1,290</span></label>
+    </fieldset>
+
+    <div class="price"><b data-price>$190</b><span>USD · shipping included</span></div>
+    <a class="cta" id="reserve" href="mailto:hola@ixtla.com?subject=Reserve%20the%20Milpa%20rug%2C%2060%20%C3%97%2090%20cm">Reserve this size</a>
+    <p class="note" id="shipping">Made to order and woven for you. Ships worldwide in 3–4 weeks, shipping included. If it isn't right, send it back within 14 days.</p>
+
+    <dl class="ledger">
+      <dt>Material</dt><dd>100% wool, hand-spun</dd>
+      <dt>Ground</dt><dd>Undyed · natural ivory</dd>
+      <dt>Dyes</dt><dd>Plant &amp; insect · no synthetics</dd>
+      <dt>Weave</dt><dd>Flat weave · pedal loom</dd>
+      <dt>Fringe</dt><dd>Twisted warp ends</dd>
+      <dt>Weight</dt><dd>approx. 1.6 kg / m²</dd>
+      <dt>Origin</dt><dd>Mexico · one of one</dd>
+    </dl>
+  </div>
+</section>
+
+<div class="grain" aria-hidden="true"></div>
+
+<section id="craft" class="wrap">
+  <p class="eyebrow">Craft</p>
+  <h2 class="sec-h">Three ingredients, and about four days.</h2>
+  <div class="g12 three">
+    <div>
+      <figure><img src="img/6425.jpg" alt="Close view of the wool weave, the ivory ground and rows of coloured dashes." loading="lazy"></figure>
+      <h3>Wool</h3>
+      <p>Sheep raised in the high valleys, sheared once a year. The fleece is washed in river water, carded and spun by hand. It stays undyed: the ground of every rug is the colour the sheep grew.</p>
+    </div>
+    <div>
+      <figure><img src="img/6419.jpg" alt="Macro of the dyed wefts: indigo, ochre, rust, sage, plum and pink on ivory wool." loading="lazy"></figure>
+      <h3>Plants</h3>
+      <p>Every dot of colour comes from a plant or an insect. Indigo for the blues, cochineal for the reds and pinks, marigold for the yellows. No two dye baths match, so no two rugs match.</p>
+    </div>
+    <div>
+      <figure class="cut"><img src="img/6417.webp" alt="A corner of the rug with its hand-twisted fringe." loading="lazy"></figure>
+      <h3>Hands</h3>
+      <p>One weaver, one pedal loom. The coloured wefts are laid in one at a time. When the rug comes off the loom the loose warp is twisted and knotted into the fringe by hand.</p>
+    </div>
+  </div>
+</section>
+
+<div class="grain" aria-hidden="true"></div>
+
+<section id="colour" class="wrap">
+  <p class="eyebrow">Colour</p>
+  <div class="g12">
+    <h2 class="sec-h" style="grid-column:1/-1">Every colour in it grew somewhere.</h2>
+    <p class="colour-intro">The dye pots are wood-fired and the recipes are older than the country. A shade shifts with the season the plant was picked and the water it was cooked in, which is why no two rugs are the same and why we don't try to make them so.</p>
+  </div>
+  <div class="g12 dyes">
+    <div class="dye">
+      <div class="lenses"><i class="lens" style="background:#2E4062"></i><i class="lens" style="background:#4A6A9A"></i><i class="lens" style="background:#3D6B6E"></i></div>
+      <h3>Añil <span class="lat">Indigofera suffruticosa</span></h3>
+      <p>Indigo. Every blue, from pale sky to near-black. Laid over marigold it gives the greens and teals.</p>
+    </div>
+    <div class="dye">
+      <div class="lenses"><i class="lens" style="background:#8E2F4B"></i><i class="lens" style="background:#D39AA6"></i><i class="lens" style="background:#5E3A55"></i></div>
+      <h3>Grana cochinilla <span class="lat">Dactylopius coccus</span></h3>
+      <p>Cochineal. A tiny insect that lives on the nopal cactus. Crushed it gives crimson; with lime, pink; with iron, plum.</p>
+    </div>
+    <div class="dye">
+      <div class="lenses"><i class="lens" style="background:#E0B33B"></i><i class="lens" style="background:#C99A2E"></i><i class="lens" style="background:#B8A23A"></i></div>
+      <h3>Pericón <span class="lat">Tagetes lucida</span></h3>
+      <p>Mexican marigold. Yellows from butter to mustard, depending on how long the bath is left to sit.</p>
+    </div>
+    <div class="dye">
+      <div class="lenses"><i class="lens" style="background:#8C9B78"></i><i class="lens" style="background:#6F7A4E"></i><i class="lens" style="background:#A8AA88"></i></div>
+      <h3>Granada <span class="lat">Punica granatum</span></h3>
+      <p>Pomegranate rind. Olive and khaki; with a little iron, a soft grey-green.</p>
+    </div>
+    <div class="dye">
+      <div class="lenses"><i class="lens" style="background:#6B4E36"></i><i class="lens" style="background:#8A6A4B"></i><i class="lens" style="background:#4A3527"></i></div>
+      <h3>Nogal <span class="lat">Juglans</span></h3>
+      <p>Walnut husk. Browns from tobacco to bark. It needs no mordant; the husk fixes itself.</p>
+    </div>
+    <div class="dye">
+      <div class="lenses"><i class="lens" style="background:#D9822B"></i><i class="lens" style="background:#B8532F"></i><i class="lens" style="background:#C4552B"></i></div>
+      <h3>Zacatlaxcalli <span class="lat">Cuscuta</span></h3>
+      <p>A golden vine that grows on other plants. Oranges and rust; over cochineal, brick red.</p>
+    </div>
+  </div>
+</section>
+
+<div class="grain" aria-hidden="true"></div>
+
+<section class="wrap g12 story">
+  <div class="txt">
+    <p class="eyebrow">The name</p>
+    <h2 class="sec-h">Why <em>milpa</em>.</h2>
+    <p>A milpa is the small Mexican field where corn, beans and squash are planted together, by hand, in rows. Seen from above it looks a lot like this rug: a pale ground, and colour in orderly, slightly imperfect lines.</p>
+    <p>We named the rug after it because it is made the same way. Slowly. In rows. By people who know exactly where everything in it came from.</p>
+  </div>
+  <figure class="cut"><img src="img/6415.webp" alt="The full rug from above." loading="lazy"></figure>
+</section>
+
+<div class="grain" aria-hidden="true"></div>
+
+<section id="care" class="wrap g12 care">
+  <h2 class="sec-h">It will outlive the floor it's on.</h2>
+  <ol>
+    <li><span>Weekly</span><p>Shake it outside. Dust leaves wool easily.</p></li>
+    <li><span>Vacuum</span><p>Suction only, no beater bar. The brush pulls at the wefts.</p></li>
+    <li><span>Spills</span><p>Blot with cold water and a drop of wool soap. Never rub.</p></li>
+    <li><span>Twice a year</span><p>Turn it around. Sun softens natural dye slowly, the way it softens everything.</p></li>
+    <li><span>Never</span><p>Machine wash, tumble dry, or bleach.</p></li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap g12 foot">
+    <a class="mark" href="#top">Ixtla</a>
+    <p class="def">Ixtla — in Nahuatl, a surface; the open plain.</p>
+    <div class="links">
+      <a href="mailto:hola@ixtla.com">hola@ixtla.com</a>
+      <a href="https://instagram.com/ixtla" rel="noopener">Instagram</a>
+      <a href="#shipping">Shipping &amp; returns</a>
+    </div>
+    <small>© 2026 Ixtla · Handwoven in Mexico · Every rug is one of one.</small>
+  </div>
+</footer>
+
+<script>
+// Stripe Payment Links, one per size. Until they exist, Reserve opens an email with the size in the subject.
+const LINKS = { s: "", m: "", l: "", xl: "" };
+const PRICES = { s: 190, m: 440, l: 720, xl: 1290 };
+const reserve = document.getElementById('reserve');
+
+function pick(r) {
+  const p = '$' + PRICES[r.value].toLocaleString('en-US');
+  document.querySelectorAll('[data-price]').forEach(e => e.textContent = p);
+  reserve.href = LINKS[r.value] || 'mailto:hola@ixtla.com?subject=' + encodeURIComponent('Reserve the Milpa rug, ' + r.dataset.label);
+}
+document.querySelectorAll('input[name=size]').forEach(r => r.addEventListener('change', () => pick(r)));
+
+// Gallery: the strip is native scroll-snap, so it already tracks the finger. Thumbs just scroll it.
+const strip = document.getElementById('strip');
+const thumbs = document.getElementById('thumbs');
+const slides = [...strip.children];
+slides.forEach((fig, i) => {
+  const src = fig.firstElementChild;
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.setAttribute('aria-pressed', i === 0);
+  b.appendChild(Object.assign(new Image(), { src: src.src, alt: src.alt, loading: 'lazy' }));
+  b.addEventListener('click', () => strip.scrollTo({ left: i * strip.clientWidth }));
+  thumbs.appendChild(b);
+});
+const sync = () => {
+  const i = Math.round(strip.scrollLeft / strip.clientWidth);
+  thumbs.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-pressed', j === i));
+};
+strip.addEventListener('scroll', sync, { passive: true });
+sync();
+</script>
+</body>
+</html>
