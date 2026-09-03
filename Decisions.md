@@ -7,7 +7,7 @@ Every value below is currently a placeholder I invented on 2026-09-02/03.
 
 - **Name** (now: Milpa, after the planted field seen from above): keep Milpa ✅
 - **Where it is made** (now: "Mexico"; a town or region reads better, e.g. Teotitlán del Valle, Oaxaca): Teotitlán del Valle, Oaxaca ✅
-- **Who makes it** (one line about the weaver or workshop, optional): Edgardo — 19, fourth-generation, taught by his grandfather, teaches Zapotec to other weavers ✅
+- **Who makes it** (one line about the weaver or workshop, optional): Edgardo — fourth-generation, taught by his grandfather, teaches Zapotec to other weavers ✅
 
 ## Sizes and prices
 
