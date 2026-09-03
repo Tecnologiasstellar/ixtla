@@ -374,7 +374,12 @@ footer{margin-top:clamp(88px,11vw,170px);border-top:1px solid var(--line);paddin
 
 <script>
 // Stripe Payment Links, one per size. Until they exist, Reserve opens an email with the size in the subject.
-const LINKS = { s: "", m: "", l: "", xl: "" };
+const LINKS = {
+  s: "https://buy.stripe.com/5kQ28q4RAfBifEK45t4Vy03",
+  m: "https://buy.stripe.com/fZu3cudo6agY3W2gSf4Vy04",
+  l: "https://buy.stripe.com/3cIbJ0fweagYfEKeK74Vy05",
+  xl: "https://buy.stripe.com/fZudR8gAi88Q9gm31p4Vy06"
+};
 const PRICES = { s: 190, m: 440, l: 720, xl: 1290 };
 const reserve = document.getElementById('reserve');
 
